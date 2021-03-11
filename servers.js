@@ -21,7 +21,7 @@ module.exports = [
 		wd: '/home/minigames/monodukuri/'
 	}, {
 		name: 'paintit',
-		label: 'Paint it!',
+		label: 'Paint It!',
 		start: './start.sh',
 		wd: '/home/minigames/paintit/'
 	}, {
