@@ -9,12 +9,14 @@ module.exports = function (interaction) {
 	const serverValue = options.find(a => a.name === 'サーバー名').value;
 	const server = servers.find(server => server.name === serverValue);
 	const command = commands[data.name];
+	console.log(server[command.runCommand] || command.defaultCommand);
 
 	if (setting.allowUsers.includes(member.user.id)) {
 		child_process.exec(server[command.runCommand] || command.defaultCommand, {
 			cwd: server.wd
 		},  (error, stdout, stderr) => {
 			if (error) {
+				console.log(error);
 				this.api.interactions(interaction.id, interaction.token).callback.post({data: {
 					type: 4,
 					data: {
