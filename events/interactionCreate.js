@@ -6,10 +6,11 @@ const commands = require('../commands');
 module.exports = function (interaction) {
 	const { member, data } = interaction;
 	const { options } = data;
-	const serverValue = options.find(a => a.name === 'サーバー名').value;
-	const server = servers.find(server => server.name === serverValue);
 	const command = commands[data.name];
 	if (!command) return;
+
+	const serverValue = options.find(a => a.name === 'サーバー名').value;
+	const server = servers.find(server => server.name === serverValue);
 	if (setting.allowUsers.includes(member.user.id)) {
 		this.api.interactions(interaction.id, interaction.token).callback.post({data: {
 			type: 4,

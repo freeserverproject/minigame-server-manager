@@ -8,6 +8,7 @@ module.exports = function (interaction) {
 	if (setting.allowUsers.includes(member.user.id)) return;
 	const { options } = data;
 	const { value } = options.find(a => a.name === 'script名');
+	
 	const script = scripts.find(script => script.name === value);
 	child_process.exec(script.script, {
 		cwd: script.cwd
