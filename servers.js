@@ -16,17 +16,17 @@ module.exports = [
 		wd: '/home/minigames/kinokogari/'
 	}, {
 		name: 'monodukuri',
-		label: 'ものづくり',
+		label: 'モノづくり',
 		start: './start.sh',
 		wd: '/home/minigames/monodukuri/'
 	}, {
 		name: 'paintit',
-		label: 'Plaint it',
+		label: 'Paint it!',
 		start: './start.sh',
 		wd: '/home/minigames/paintit/'
 	}, {
 		name: 'questers',
-		label: 'クエスターズ',
+		label: 'Questers',
 		start: './start.sh',
 		wd: '/home/minigames/questers/'
 	}, {
