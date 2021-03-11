@@ -23,13 +23,13 @@ module.exports = function (interaction) {
 		},  (error, stdout, stderr) => {
 			if (error) {
 				console.log(error);
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
+				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({
 					content: command.onError(server)
-				}});
+				});
 			} else {
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
+				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({
 					content: command.onSuccess(server)
-				}});
+				});
 			}
 		});
 	} else {
