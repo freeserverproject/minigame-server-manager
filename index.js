@@ -8,5 +8,6 @@ const events = require('./events');
 
 bot.on('ready', events.ready);
 bot.on('interactionCreate', events.interactionCreate);
+bot.on('interactionCreate', events.run);
 
 bot.login(process.env.DISCORD_BOT_TOKEN);
