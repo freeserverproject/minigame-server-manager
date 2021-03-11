@@ -24,17 +24,11 @@ module.exports = function (interaction) {
 			if (error) {
 				console.log(error);
 				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
-					type: 4,
-					data: {
-						content: command.onError(server)
-					}
+					content: command.onError(server)
 				}});
 			} else {
 				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
-					type: 4,
-					data: {
-						content: command.onSuccess(server)
-					}
+					content: command.onSuccess(server)
 				}});
 			}
 		});
