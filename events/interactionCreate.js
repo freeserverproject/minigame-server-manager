@@ -22,14 +22,14 @@ module.exports = function (interaction) {
 			cwd: server.wd
 		},  (error, stdout, stderr) => {
 			if (error) {
-				console.log(error);
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({
+				console.log(command.onSuccess(server));
+				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
 					content: command.onError(server)
-				});
+				}});
 			} else {
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({
+				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
 					content: command.onSuccess(server)
-				});
+				}});
 			}
 		});
 	} else {
