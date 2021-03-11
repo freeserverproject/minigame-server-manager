@@ -9,27 +9,19 @@ module.exports = function (interaction) {
 	const serverValue = options.find(a => a.name === 'サーバー名').value;
 	const server = servers.find(server => server.name === serverValue);
 	const command = commands[data.name];
-	console.log(server[command.runCommand] || command.defaultCommand);
-
+	if (!command) return;
 	if (setting.allowUsers.includes(member.user.id)) {
 		this.api.interactions(interaction.id, interaction.token).callback.post({data: {
-			type: 5,
+			type: 4,
 			data: {
-				content: command.inProgress(server)
+				content: command.onSuccess(server)
 			}
 		}});
 		child_process.exec(server[command.runCommand] || command.defaultCommand, {
 			cwd: server.wd
 		},  (error, stdout, stderr) => {
 			if (error) {
-				console.log(command.onSuccess(server));
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
-					content: command.onError(server)
-				}});
-			} else {
-				this.api.webhooks(this.user.id, interaction.token).messages['@original'].patch({data: {
-					content: command.onSuccess(server)
-				}});
+				console.log(error);
 			}
 		});
 	} else {
