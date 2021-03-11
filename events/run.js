@@ -5,7 +5,7 @@ const child_process = require('child_process');
 module.exports = function (interaction) {
 	if (interaction.data.name !== 'run') return;
 	const { member, data } = interaction;
-	if (setting.allowUsers.includes(member.user.id)) return;
+	if (!setting.allowUsers.includes(member.user.id)) return;
 	const { options } = data;
 	const { value } = options.find(a => a.name === 'script名');
 	
