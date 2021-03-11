@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "discord.js-slash-command": "^1.0.0",
+    "discord.js-slash-command": "github:tsutoringo/discord.js-slash-command",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {},
