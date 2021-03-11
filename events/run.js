@@ -12,7 +12,7 @@ module.exports = function (interaction) {
 	const script = scripts.find(script => script.name === value);
 	child_process.exec(script.script, {
 		cwd: script.cwd
-	}, function (error, stdout, stderr) {
+	}, (error, stdout, stderr) => {
 		if (error) {
 			this.api.interactions(interaction.id, interaction.token).callback.post({data: {
 				type: 4,
