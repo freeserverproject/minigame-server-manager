@@ -12,7 +12,7 @@ module.exports = function (interaction) {
 		if (setting.allowUsers.includes(member.user.id)) {
 			child_process.exec(server.run, {
 				cwd: server.wd
-			}, function (error, stdout, stderr) {
+			},  (error, stdout, stderr) => {
 				if (error) {
 					this.api.interactions(interaction.id, interaction.token).callback.post({data: {
 						type: 4,
