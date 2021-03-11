@@ -12,19 +12,25 @@ module.exports = function (interaction) {
 	console.log(server[command.runCommand] || command.defaultCommand);
 
 	if (setting.allowUsers.includes(member.user.id)) {
+		this.api.interactions(interaction.id, interaction.token).callback.post({data: {
+			type: 5,
+			data: {
+				content: command.inProgress(server)
+			}
+		}});
 		child_process.exec(server[command.runCommand] || command.defaultCommand, {
 			cwd: server.wd
 		},  (error, stdout, stderr) => {
 			if (error) {
 				console.log(error);
-				this.api.interactions(interaction.id, interaction.token).callback.post({data: {
+				this.api.webhooks(this.user.id, interaction.token).message['@original'].patch({data: {
 					type: 4,
 					data: {
 						content: command.onError(server)
 					}
 				}});
 			} else {
-				this.api.interactions(interaction.id, interaction.token).callback.post({data: {
+				this.api.webhooks(this.user.id, interaction.token).message['@original'].patch({data: {
 					type: 4,
 					data: {
 						content: command.onSuccess(server)
